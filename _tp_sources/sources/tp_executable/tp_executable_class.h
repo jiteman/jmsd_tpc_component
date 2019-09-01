@@ -1,20 +1,20 @@
 #pragma once
 
 
-#include "dlt/dlt_class.h"
+#include "tp_derived/tp_derived_class.h"
 
 
 namespace jmsd {
-namespace et {
+namespace tp_executable {
 
 
-class Executable_class :
-	public dlt::Derived_class
+class Tp_executable_class :
+	public tp_derived::Tp_derived_class
 {
 
 public:
-	// virtuals Derived_class
-	//~virtuals Derived_class
+	// virtuals Tp_derived_class
+	//~virtuals Tp_derived_class
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
@@ -22,22 +22,22 @@ public:
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 public:
-	// virtual Derived_class
-	~Executable_class() noexcept override = default;
+	// virtual Tp_derived_class
+	~Tp_executable_class() noexcept override = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
-	Executable_class() noexcept = default;
+	Tp_executable_class() noexcept = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 private:
-	Executable_class( const Executable_class &another ) noexcept = delete;
-	Executable_class &operator =( const Executable_class &another ) noexcept = delete;
+	Tp_executable_class( const Tp_executable_class &another ) noexcept = delete;
+	Tp_executable_class &operator =( const Tp_executable_class &another ) noexcept = delete;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 private:
-	Executable_class( Executable_class &&another ) noexcept = delete;
-	Executable_class &operator =( Executable_class &&another ) noexcept = delete;
+	Tp_executable_class( Tp_executable_class &&another ) noexcept = delete;
+	Tp_executable_class &operator =( Tp_executable_class &&another ) noexcept = delete;
 
 // # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 private:

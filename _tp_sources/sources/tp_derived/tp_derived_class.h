@@ -16,8 +16,8 @@ class JMSD_TP_DERIVED_LIBRARY_TEMPLATE_SHARED_INTERFACE Tp_derived_class :
 {
 
 public:
-	// virtuals Base_class
-	//~virtuals Base_class
+	// virtuals Tp_base_class
+	//~virtuals Tp_base_class
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 public:
@@ -25,7 +25,7 @@ public:
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 public:
-	// virtual Base_class
+	// virtual Tp_base_class
 	~Tp_derived_class() noexcept override = default;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

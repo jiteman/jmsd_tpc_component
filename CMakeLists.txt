@@ -12,7 +12,7 @@ set( JMSD_COMPONENT_CMAKE_SETTINGS_PATH ${PROJECT_SOURCE_DIR}/_tp_cmake_settings
 
 add_subdirectory( tp_base_lib )
 add_subdirectory( tp_derived_lib )
-# add_subdirectory( tp_executabe )
+add_subdirectory( tp_executabe )
 
 
 JMSD_SHOW_PROJECT_GROUP_FOOTER()
