@@ -2,12 +2,12 @@
 
 
 namespace jmsd {
-namespace tb_base {
+namespace tp_base {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 char const *Tp_base_class::say_base_hello() const noexcept {
-	return "Base_class::say_base_hello";
+	return "Tp_base_class::say_base_hello";
 }
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

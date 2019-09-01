@@ -5,7 +5,7 @@
 
 
 namespace jmsd {
-namespace tb_base {
+namespace tp_base {
 
 
 class JMSD_TP_BASE_LIBRARY_TEMPLATE_SHARED_INTERFACE Tp_base_class {

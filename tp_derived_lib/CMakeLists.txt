@@ -1,33 +1,37 @@
 cmake_minimum_required( VERSION 3.7.1 )
 
-project( derived_library_template C CXX )
+project( jmsd_tp_derived_lib C CXX )
 
 
 JMSD_SHOW_PROJECT_HEADER()
 
 
+include( ${JMSD_COMPONENT_CMAKE_SETTINGS_PATH}/tp-component-derived-set-compiler-settings.cmake )
+set( JMSD_THIS_PROJECT_SOURCE_ROOT ${JMSD_COMPONENT_SOURCE_ROOT_PATH}/sources/tp_derived )
+
+
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
-	${base_library_template_DEPENDENCY_DIRS}
-	${PROJECT_SOURCE_DIR}/sources )
+	${jmsd_tp_base_lib_DEPENDENCY_DIRS}
+	${JMSD_COMPONENT_SOURCE_ROOT_PATH}/sources )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
-include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} )
+include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} ${JMSD_THIS_PROJECT_SOURCE_ROOT} )
 
 
 ## this project headers and sources enumeration section
-file( GLOB_RECURSE header_and_source_files ${PROJECT_SOURCE_DIR}/sources/*.h* ${PROJECT_SOURCE_DIR}/sources/*.c* )
+file( GLOB_RECURSE header_and_source_files ${JMSD_THIS_PROJECT_SOURCE_ROOT}/*.h* ${JMSD_THIS_PROJECT_SOURCE_ROOT}/*.c* )
 add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
-	${base_library_template_LINK_DEFINITIONS}
-	-DJMSD_DERIVED_LIBRARY_TEMPLATE_SHARED_INTERFACE_INTERNAL )
+	${jmsd_tp_base_lib_LINK_DEFINITIONS}
+	-DJMSD_TP_DERIVED_LIBRARY_TEMPLATE_SHARED_INTERFACE_INTERNAL )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 set( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR
-	${base_library_template_LINK_DEFINITIONS} )
+	${jmsd_tp_base_lib_LINK_DEFINITIONS} )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR )
 JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR )
 add_definitions( "${${PROJECT_NAME}_BUILD_DEFINITIONS_VAR}" )
@@ -41,8 +45,8 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 ## project target section
 set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	${base_library_template_DEPENDENCY_LIBS}
-	base_library_template )
+	${jmsd_tp_base_lib_DEPENDENCY_LIBS}
+	jmsd_tp_base_lib )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 
