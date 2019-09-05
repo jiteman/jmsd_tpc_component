@@ -1,46 +1,43 @@
 cmake_minimum_required( VERSION 3.7.1 )
 
-project( tp_executable C CXX )
+project( jmsd_tpc_derived_lib C CXX )
 
 
 JMSD_SHOW_PROJECT_HEADER()
 
 
-include( ${JMSD_COMPONENT_CMAKE_SETTINGS_PATH}/tp-component-derived-set-compiler-settings.cmake )
-set( JMSD_THIS_PROJECT_SOURCE_ROOT ${JMSD_COMPONENT_SOURCE_ROOT_PATH}/sources/tp_executable )
+include( ${JMSD_COMPONENT_CMAKE_SETTINGS_PATH}/tpc-component-derived-set-compiler-settings.cmake )
+set( JMSD_THIS_PROJECT_SOURCE_ROOT ${JMSD_COMPONENT_SOURCE_ROOT_PATH}/sources/tpc_derived )
 
 
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
 	${JMSD_PLATFORM_SOURCES}
-	${jmsd_tp_derived_lib_DEPENDENCY_DIRS}
+	${jmsd_tpc_base_lib_DEPENDENCY_DIRS}
 	${JMSD_COMPONENT_SOURCE_ROOT_PATH}/sources )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR )
 include_directories( ${${PROJECT_NAME}_DEPENDENCY_DIRS_VAR} ${JMSD_THIS_PROJECT_SOURCE_ROOT} )
 
 
 ## this project headers and sources enumeration section
-file( GLOB_RECURSE header_and_source_files
-	${JMSD_THIS_PROJECT_SOURCE_ROOT}/*.h*
-	${JMSD_THIS_PROJECT_SOURCE_ROOT}/*.c*
-	${JMSD_THIS_PROJECT_SOURCE_ROOT}_main/*.h*
-	${JMSD_THIS_PROJECT_SOURCE_ROOT}_main/*.c* )
-add_executable( ${PROJECT_NAME} ${header_and_source_files} )
+file( GLOB_RECURSE header_and_source_files ${JMSD_THIS_PROJECT_SOURCE_ROOT}/*.h* ${JMSD_THIS_PROJECT_SOURCE_ROOT}/*.c* )
+add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
-	${jmsd_tp_derived_lib_LINK_DEFINITIONS} )
+	${jmsd_tpc_base_lib_LINK_DEFINITIONS}
+	-DJMSD_TPC_DERIVED_LIBRARY_TEMPLATE_SHARED_INTERFACE_INTERNAL )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 set( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR
-	"" )
+	${jmsd_tpc_base_lib_LINK_DEFINITIONS} )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR )
 JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR )
 add_definitions( "${${PROJECT_NAME}_BUILD_DEFINITIONS_VAR}" )
 
 
-# Required to be able to be linked into shared libraries.
+## required to be able to be linked into shared libraries.
 set_target_properties( ${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON )
 set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION 0.1.0 )
 set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
@@ -48,8 +45,8 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES SOVERSION 0.1 )
 
 ## project target section
 set( ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR
-	${jmsd_tp_derived_lib_DEPENDENCY_LIBS}
-	jmsd_tp_derived_lib )
+	${jmsd_tpc_base_lib_DEPENDENCY_LIBS}
+	jmsd_tpc_base_lib )
 list( REMOVE_DUPLICATES ${PROJECT_NAME}_DEPENDENCY_LIBS_VAR )
 target_link_libraries( ${PROJECT_NAME} ${${PROJECT_NAME}_DEPENDENCY_LIBS_VAR} )
 

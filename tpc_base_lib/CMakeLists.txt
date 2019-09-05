@@ -1,13 +1,13 @@
 cmake_minimum_required( VERSION 3.7.1 )
 
-project( jmsd_tp_base_lib C CXX )
+project( jmsd_tpc_base_lib C CXX )
 
 
 JMSD_SHOW_PROJECT_HEADER()
 
 
-include( ${JMSD_COMPONENT_CMAKE_SETTINGS_PATH}/tp-component-base-set-compiler-settings.cmake )
-set( JMSD_THIS_PROJECT_SOURCE_ROOT ${JMSD_COMPONENT_SOURCE_ROOT_PATH}/sources/tp_base )
+include( ${JMSD_COMPONENT_CMAKE_SETTINGS_PATH}/tpc-component-base-set-compiler-settings.cmake )
+set( JMSD_THIS_PROJECT_SOURCE_ROOT ${JMSD_COMPONENT_SOURCE_ROOT_PATH}/sources/tpc_base )
 
 ## include dependencies
 set( ${PROJECT_NAME}_DEPENDENCY_DIRS_VAR
@@ -24,7 +24,7 @@ add_library( ${PROJECT_NAME} SHARED ${header_and_source_files} )
 
 ## definition section
 set( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR
-	-DJMSD_TP_BASE_LIBRARY_TEMPLATE_SHARED_INTERFACE_INTERNAL )
+	-DJMSD_TPC_BASE_LIBRARY_TEMPLATE_SHARED_INTERFACE_INTERNAL )
 JMSD_LIST_TO_STRING( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 JMSD_STRING_REMOVE_DUPLICATES( ${PROJECT_NAME}_BUILD_DEFINITIONS_VAR )
 set( ${PROJECT_NAME}_LINK_DEFINITIONS_VAR
