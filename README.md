@@ -1,2 +1,2 @@
-# jmsd_tp_component
+# jmsd_tpc_component
 third party component template
